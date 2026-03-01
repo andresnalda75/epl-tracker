@@ -1,15 +1,22 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
+const path = require('path');
 
 const app = express();
 app.use(cors());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
+
+app.get('/health', (req, res) => res.status(200).send('OK'));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'epl-tracker.html'));
+});
 
 const API_KEY = '3966f7fa5a62439e9a84c5ddbc41dae0';
 
-app.get('/api/{*path}', async (req, res) => {
-  const rawPath = Array.isArray(req.params.path) ? req.params.path.join('/') : req.params.path;
+app.get('/api/*', async (req, res) => {
+  const rawPath = req.params[0];
   const apiUrl = 'https://api.football-data.org/v4/' + rawPath;
   const query = new URLSearchParams(req.query).toString();
   const fullUrl = query ? apiUrl + '?' + query : apiUrl;
