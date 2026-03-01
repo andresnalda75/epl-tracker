@@ -27,6 +27,7 @@ app.get('/api/{*path}', async (req, res) => {
   }
 });
 
-app.listen(3000, '0.0.0.0', () => {
-  console.log('EPL Tracker running at http://localhost:3000/epl-tracker.html');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('EPL Tracker running on port ' + PORT);
 });
