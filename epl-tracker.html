@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>⚽</text></svg>">
-<<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EPL Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -211,7 +210,7 @@
 </main>
 
 <script>
-const BASE = 'https://epl-tracker-production.up.railway.app/api';
+const BASE = 'http://192.168.40.238:3000/api';
 const COMP = 'PL';
 let apiKey = localStorage.getItem('epl_api_key') || '';
 let finishedMatches = [];
